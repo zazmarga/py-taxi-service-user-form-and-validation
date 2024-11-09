@@ -4,7 +4,7 @@
   <h1>Delete driver {{ driver.username }}?</h1>
   <div class="row">
     <div class="col-1">
-      <a href="{% url 'taxi:driver-detail' driver.id %}"><input type="submit" value="Cancel" class="btn btn-secondary"></a>
+      <a href="{% url 'taxi:driver-detail' driver.id %}" class="btn btn-secondary">Cancel</a>
     </div>
     <div class="col-1 col-offset-1">
       <form action="" method="post">

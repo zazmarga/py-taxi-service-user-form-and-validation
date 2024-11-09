@@ -7,10 +7,16 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
 
-class DriverLicenseUpdateForm(UserCreationForm):
+class DriverCreationForm(UserCreationForm, forms.ModelForm):
     class Meta(UserCreationForm.Meta):
         model = Driver
-        fields = ("license_number",)
+        fields = (
+            "username",
+            "first_name",
+            "last_name",
+            "email",
+            "license_number"
+        )
 
     def clean_license_number(self):
         license_number = self.cleaned_data["license_number"]
@@ -31,16 +37,10 @@ class DriverLicenseUpdateForm(UserCreationForm):
         return license_number
 
 
-class DriverCreationForm(DriverLicenseUpdateForm, forms.ModelForm):
+class DriverLicenseUpdateForm(DriverCreationForm):
     class Meta:
         model = Driver
-        fields = (
-            "username",
-            "first_name",
-            "last_name",
-            "email",
-            "license_number"
-        )
+        fields = ("license_number",)
 
 
 class CarForm(forms.ModelForm):
